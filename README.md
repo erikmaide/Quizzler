@@ -14,6 +14,7 @@ I’m going to make a quiz app that tests your general knowledge.
 
 
 <p align="center"><img height="420px" src='https://raw.githubusercontent.com/erikmaide/test/master/quizzler.gif'></p>
+
 ## What I will learn
 
 - Modularising my code into separate classes.
