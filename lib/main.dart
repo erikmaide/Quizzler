@@ -37,6 +37,29 @@ class _QuizPageState extends State<QuizPage> {
   ];
 
   int questionNumber = 0;
+
+  void checkAnswer(bool userAnswer) {
+    setState(() {
+      bool correctAnswer = questionVault[questionNumber].questionAnswer;
+      if (correctAnswer == userAnswer) {
+        scoreKeeper.add(
+          Icon(
+            Icons.check,
+            color: Colors.green,
+          ),
+        );
+      } else {
+        scoreKeeper.add(
+          Icon(
+            Icons.close,
+            color: Colors.red,
+          ),
+        );
+      }
+      questionNumber++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -73,27 +96,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                setState(() {
-                  bool correctAnswer =
-                      questionVault[questionNumber].questionAnswer;
-                  if (correctAnswer == true) {
-                    print('user got it right');
-                    scoreKeeper.add(
-                      Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    );
-                  } else {
-                    scoreKeeper.add(
-                      Icon(
-                        Icons.close,
-                        color: Colors.red,
-                      ),
-                    );
-                  }
-                  questionNumber++;
-                });
+                checkAnswer(true);
               },
             ),
           ),
@@ -111,27 +114,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                setState(() {
-                  bool correctAnswer =
-                      questionVault[questionNumber].questionAnswer;
-                  if (correctAnswer == false) {
-                    print('user got it right');
-                    scoreKeeper.add(
-                      Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    );
-                  } else {
-                    scoreKeeper.add(
-                      Icon(
-                        Icons.close,
-                        color: Colors.red,
-                      ),
-                    );
-                  }
-                  questionNumber++;
-                });
+                checkAnswer(false);
               },
             ),
           ),
