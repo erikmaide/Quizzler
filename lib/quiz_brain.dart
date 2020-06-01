@@ -1,7 +1,9 @@
 import 'question.dart';
 
 class QuizBrain {
-  List<Question> questionVault = [
+  int _questionNumber = 0;
+
+  List<Question> _questionVault = [
     Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
     Question(
         q: 'Approximately one quarter of human bones are in the feet.',
@@ -30,4 +32,15 @@ class QuizBrain {
         q: 'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
         a: true),
   ];
+  void nextQuestion() {
+    if (_questionNumber < _questionVault.length - 1) _questionNumber++;
+  }
+
+  bool getCorrectAnswer() {
+    return _questionVault[_questionNumber].questionAnswer;
+  }
+
+  String getQuestionText() {
+    return _questionVault[_questionNumber].questionText;
+  }
 }
