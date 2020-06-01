@@ -40,7 +40,19 @@ class QuizBrain {
     return _questionVault[_questionNumber].questionAnswer;
   }
 
+  bool isFinished() {
+    if (_questionNumber >= _questionVault.length - 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   String getQuestionText() {
     return _questionVault[_questionNumber].questionText;
+  }
+
+  void reset() {
+    _questionNumber = 0;
   }
 }
